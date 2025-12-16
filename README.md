@@ -1,19 +1,28 @@
 # Class activity
-# Fullstack web development
+# Topic: Backend development
 
 ## 1 Database Design
-- Define your database structure using **DBdiagrams**.
-- Your schema must include at least one of each relationship type:
-  - One-to-One  
-  - One-to-Many  
-  - Many-to-Many  
+- Use **DBdiagrams** (https://dbdiagram.io) to design your database schema.
+- Clearly define:
+  - Tables (entities)
+  - Columns and data types
+  - Primary keys and foreign keys
+- Your design **must include**:
+  - One-to-One relationship  
+  - One-to-Many relationship  
+  - Many-to-Many relationship
+- Export or save the diagram for submission.
 
 ---
 
 ## 2 Backend Repository
-- Create a **separate repository** for your backend application.
+- Create a **new repository** specifically for the backend.
 - Host the repository on **GitLab**.
-- Add all collaborators/contributors to the repository.
+- Add a `README.md` explaining:
+  - Project purpose
+  - Technologies used
+  - How to run the project locally
+- Add all collaborators/contributors.
 
 ---
 
@@ -31,53 +40,80 @@
 ---
 
 ## 5 Models
-- Define Django models based on the database structure created in **Step 1**.
-- Ensure relationships are correctly represented using Django ORM fields.
+- Create one or more Django apps for your domain logic.
+- Define models in models.py based on your database diagram.
+- Use Django ORM relationship fields:
+  - `OneToOneField`
+  - `ForeignKey`
+  - `ManyToManyField`
+
+- Add meaningful field names and constraints (null, blank, unique).
 
 ---
 
 ## 6 Views and URLs
-- Create API views using **Django REST Framework (DRF)**.
-- Configure URL routing for all endpoints.
+- Install Django REST Framework (DRF).
+- Create serializers for your models.
+- Implement API views or viewsets for CRUD operations.
+- Configure URL routing to expose endpoints for data access and modification.
 
 ---
 
 ## 7 PostgreSQL Driver
 - Install the PostgreSQL database driver for Python.
+  
 `pip install psycopg[binary]
  psql -h localhost -U myuser -d mydb
 `
 ---
 
 ## 8 Hosting
-- Host the **PostgreSQL database** and **Django application** on **Render**.
-  https://render.com/
+- Create an account on Render: https://render.com/
+- Provision:
+    - A PostgreSQL database service
+    - A web service for your Django application
+- Ensure both services can communicate securely.
 
 ---
 
 ## 9 Environment Variables
-- Add database environment variables to a `.env` file.
-- Install and use **python-dotenv** to load environment variables.
+- Create a .env file to store sensitive information:
+    - Database name
+    - Username
+    - Password
+    - Host
+    - Port
+- Install dotenv support:
+  
 `pip install python-dotenv
 `
-- Upload the `.env` configuration to the hosting platform.
+- Load environment variables in Django settings.
+- Add environment variables to Render’s dashboard (do not commit secrets).
 
 ---
 
 ## 10 Database Configuration
-- Configure the PostgreSQL database connection in `settings.py`.
+- Update `settings.py` to use PostgreSQL.
+- Configure the `DATABASES` setting using environment variables.
+- Confirm Django can connect to the database.
 
 ---
 
 ## 11 Migrations
 - Run Django migrations to create database tables.
+  
 `python manage.py makemigrations
 python manage.py migrate`
+
 ---
 
 ## 12 Data Seeding and API Testing
-- Create a data seeding script to populate the database.
-- Use **Postman** to test all API endpoints.
+- Create a data seeding script or Django management command.
+- Populate the database with sample data.
+- Use Postman to:
+    - Test API endpoints
+    - Validate responses
+    - Confirm correct HTTP status codes
 
 ---
 
@@ -94,3 +130,11 @@ python manage.py migrate`
 ## 14 Data Presentation
 - Fetch data from the backend.
 - Display database data on the frontend UI.
+
+
+
+#To submit
+1. Database diagrams
+2. Backend repository link (GitLab)
+3. Backend domain URL hosted on Render
+4. List of API endpoints with example requests
